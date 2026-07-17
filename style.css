@@ -95,7 +95,8 @@ body {
     margin-top: 16px;
 }
 
-.contact-list a {
+.contact-list a,
+.contact-list button {
     color: var(--primary);
     text-decoration: none;
     padding: 8px 12px;
@@ -105,7 +106,8 @@ body {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.contact-list a:hover {
+.contact-list a:hover,
+.contact-list button:hover {
     transform: translateY(-1px);
     box-shadow: 0 0 12px rgba(56, 189, 248, 0.24);
 }
@@ -212,4 +214,3 @@ li {
         grid-template-columns: 1fr;
     }
 }
-
