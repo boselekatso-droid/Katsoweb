@@ -67,6 +67,28 @@ body {
     box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.08), 0 18px 45px rgba(0, 0, 0, 0.35);
 }
 
+/* Added: button styling for the PDF download action */
+.download-btn {
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: rgba(56, 189, 248, 0.08);
+    color: var(--primary);
+    padding: 8px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    font: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.download-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.24);
+}
+
+.download-btn:disabled {
+    opacity: 0.85;
+    cursor: wait;
+}
+
 .eyebrow {
     text-transform: uppercase;
     letter-spacing: 0.24em;
@@ -95,8 +117,7 @@ body {
     margin-top: 16px;
 }
 
-.contact-list a,
-.contact-list button {
+.contact-list a {
     color: var(--primary);
     text-decoration: none;
     padding: 8px 12px;
@@ -106,8 +127,7 @@ body {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.contact-list a:hover,
-.contact-list button:hover {
+.contact-list a:hover {
     transform: translateY(-1px);
     box-shadow: 0 0 12px rgba(56, 189, 248, 0.24);
 }
@@ -199,6 +219,89 @@ li {
     margin: 4px 0 8px;
 }
 
+/* Added: keep content blocks from being split awkwardly across PDF pages */
+.card,
+.hero,
+.skill-group,
+.reference-item,
+.experience-item,
+.timeline-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+@media print {
+    body {
+        background: #fff !important;
+        color: #111827 !important;
+        font-size: 11pt;
+        line-height: 1.4;
+    }
+
+    .top-nav,
+    .download-btn {
+        display: none !important;
+    }
+
+    .page {
+        max-width: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .hero,
+    .card,
+    .skill-group,
+    .reference-item,
+    .experience-item,
+    .timeline-item {
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        border-radius: 0;
+        border-color: #d1d5db;
+        background: #fff !important;
+        color: #111827 !important;
+    }
+
+    .hero {
+        padding: 16mm 18mm;
+        margin: 0 0 10mm;
+        border: 1px solid #d1d5db;
+    }
+
+    .card {
+        padding: 10mm 12mm;
+        margin: 0 0 6mm;
+        border: 1px solid #d1d5db;
+    }
+
+    .hero h1,
+    h2,
+    h3,
+    p,
+    li,
+    a,
+    .meta {
+        color: #111827 !important;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .contact-list a {
+        background: transparent;
+        border-color: #d1d5db;
+    }
+
+    .skills-grid,
+    .reference-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10pt;
+    }
+}
+
 @media (max-width: 760px) {
     .hero {
         flex-direction: column;
@@ -209,8 +312,14 @@ li {
         justify-content: center;
     }
 
+    .download-btn {
+        position: static;
+        margin-bottom: 12px;
+    }
+
     .skills-grid,
     .reference-grid {
         grid-template-columns: 1fr;
     }
 }
+
