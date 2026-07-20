@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Katso Bosele | Software Developer</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <nav class="top-nav">
@@ -27,7 +26,7 @@
                     <a href="tel:+27607671280">060 767 1280</a>
                     <a href="https://linkedin.com/in/katso-bosele-2167712a1" target="_blank" rel="noreferrer">LinkedIn</a>
                     <a href="https://github.com/boselekatso-droid" target="_blank" rel="noreferrer">GitHub</a>
-                    <button id="download-cv-btn" type="button">Download CV (PDF)</button>
+                    <button class="download-btn" id="download-pdf" type="button">Download PDF</button>
                 </div>
             </div>
             <img src="https://media.licdn.com/dms/image/v2/D4D03AQGw2Rq4YSxunA/profile-displayphoto-shrink_800_800/B4DZ5QsH4lG4Ac-/0/1779470204980?e=1785369600&v=beta&t=diBgH36vUdmPnd4tWTaKUou3rt2ru1a7URCjM2ty5HY" alt="Katso Bosele">
@@ -146,7 +145,6 @@
             <article class="experience-item">
                 <h3>AI-Assisted Web Application (Project)</h3>
                 <p class="meta">Movie Recommendation System • 2026</p>
-                               <a href="https://github.com/boselekatso-droid/Machine-leaning-Mini-project-AI" target="_blank" rel="noreferrer">View project</a>
                 <ul>
                     <li>Developed an AI-assisted movie recommendation application using Python, Pandas, Jupyter Notebook, and external APIs.</li>
                     <li>Built a data processing pipeline to collect, clean, and transform movie data from external sources.</li>
@@ -172,7 +170,7 @@
                     <p>Principal, Setswakgosing Secondary School</p>
                     <p>079 599 220</p>
                 </div>
-                 <div class="reference-item">
+                <div class="reference-item">
                     <h3>Mr Malusi</h3>
                     <p>BoseMalu Construction</p>
                     <p>082 617 466</p>
@@ -180,6 +178,19 @@
             </div>
         </section>
     </main>
-    <script src="script.js" defer></script>
+
+    <script>
+        // Added: open the browser print dialog so the CV can be saved as PDF.
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('download-pdf');
+            if (!button) return;
+
+            button.addEventListener('click', () => {
+                window.print();
+            });
+        });
+    </script>
 </body>
 </html>
+
+
